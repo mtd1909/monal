@@ -9,12 +9,14 @@ $(document).ready(function() {
     smartSpeed: 1500,
     nav: true,
     margin: 10,
-    responsive: true,
     responsive: {
       1200: {
         items: 3,
       },
-      992: {
+      1024: {
+        items: 2,
+      },
+      768: {
         items: 2,
       },
       375: {
@@ -22,52 +24,39 @@ $(document).ready(function() {
       },
       320: {
         items: 1,
+      },
+      1: {
+        items: 1,
       }
     }
   })
 })
 
-// Header Fixed
-var headerFixed = function () {
-  if ($('body').hasClass('header_fixed')) {
-      var nav = $('#header_main');
-      if (nav.length) {
-          var offsetTop = nav.offset().top,
-               headerHeight = nav.height(),
-               injectSpace = $('<div />', {
-              height: headerHeight
-          }).insertAfter(nav);
-
-          $(window).on('load scroll', function () {
-              if ($(window).scrollTop() > 200) {
-                  nav.addClass('is_fixed');
-                  injectSpace.show();
-              } else {
-                  nav.removeClass('is_fixed');
-                  injectSpace.hide();
-              }
-
-              if ($(window).scrollTop() > 300) {
-                  nav.addClass('is_small');
-              } else {
-                  nav.removeClass('is_small');
-              }
-          })
-      }
-  }
-};
-
-$('.menu_bars').click(function() {
+// Click hien menu
+$('.menu_bars').click(function(e) {
   $('.header_right').toggleClass('show-menu');
+  $('.overlay_container').toggleClass('menu_bars_overlay');
+  e.stopPropagation();
+  e.stopImmediatePropagation();
 })
 
+$('.overlay_container').click(function() {
+  $('.header_right').removeClass('show-menu');
+  $('.overlay_container').removeClass('menu_bars_overlay');
+})  
+
+// Sticky header
+let header = document.querySelector(".header");
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("sticky", window.scrollY > 0);
+  });
 
 // pre-loader
 setTimeout(function() {
   $('#pre-loader').addClass('show');
 }, 0);
 
-var number = 0;
+let number = 0;
 function demSo() {
   if(number <32) {
     number +=1;
@@ -118,11 +107,11 @@ var swiper3 = new Swiper(".mySwiper3", {
     576: {
       slidesPerView: 2,
     },
-    768: {
-      slidesPerView: 3,
-    },
     600: {
       slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 3,
     },
   },
 });
@@ -138,13 +127,22 @@ var swiper4 = new Swiper(".mySwiper4", {
       slidesPerView: 1,
     },
     480: {
-      slidesPerView: 2,
+      slidesPerView: 1,
     },
     576: {
+      slidesPerView: 1,
+    },
+    577: {
       slidesPerView: 2,
     },
     768: {
       slidesPerView: 2,
+    },
+    992: {
+      slidesPerView: 3,
+    },
+    1024: {
+      slidesPerView: 3,
     },
     1200: {
       slidesPerView: 4,
