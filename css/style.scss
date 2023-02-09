@@ -306,7 +306,6 @@ a {
     top: 0;
     left: 0;
     right: 0;
-    // box-shadow: 0 8px 20px 0 rgb(0 0 0 / 10%);
     background-color: #fff;
     animation: .95s ease-in-out 0s normal none 1 running fadeInDown;
     transition: all .7s cubic-bezier(.645,.045,.355,1);
@@ -2152,11 +2151,11 @@ a {
   0% {
     opacity: 0;
     transform: translate3d(0,-100%,0);
-}
+  }
   100% {
     opacity: 1;
     transform: translateZ(0);
-}
+  }
 }
 @media screen and (max-width: 1440px) {
   .header {
@@ -2890,6 +2889,7 @@ a {
     .about {
       padding-bottom: 200px;
       flex-direction: column;
+      border-top: 1px solid #E8E8E9;
       .about_left {
         width: 100%;
         .about_img {

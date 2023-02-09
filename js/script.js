@@ -68,6 +68,7 @@ function findTop(element) {
   return rec.top;
 }
 var isShow = true
+
 $(document).scroll(function() {
   var y = $(this).scrollTop();
   if (y > findTop('#count') && isShow) {
